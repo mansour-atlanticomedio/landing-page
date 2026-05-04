@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   frontend:
+  build: ./frontend
     image: httpd:2.4-alpine
     ports:
       - "80:80"
@@ -14,7 +15,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_HOST=landing_pagedb
+      - DB_HOST=database
       - DB_USER=root
       - DB_PASSWORD=1234
     restart: always
