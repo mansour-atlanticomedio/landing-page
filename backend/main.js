@@ -83,7 +83,7 @@ app.post('/documentation', upload.array('files', 10), async (req, res) => {
 });
 
 const PORT = 3000;
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => {
         console.log(`Servidor corriendo en http://localhost:${PORT}`);
     });
