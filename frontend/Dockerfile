@@ -10,8 +10,12 @@ COPY . .
 
 RUN npm run build
 
+RUN ls -l /app
+
 FROM httpd:2.4-alpine
 
-COPY --from=build-stage /app/dist /usr/local/apache2/htdocs/
+RUN rm -rf /usr/local/apache2/htdocs/*
+
+COPY --from=build-stage /app/dist/. /usr/local/apache2/htdocs/
 
 EXPOSE 80

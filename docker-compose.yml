@@ -6,9 +6,8 @@ services:
     image: httpd:2.4-alpine
     ports:
       - "80:80"
-    volumes:
-      - ./frontend/dist:/usr/local/apache2/htdocs/
-    restart: always
+    # volumes:
+    #   - ./frontend/dist:/usr/local/apache2/htdocs/
 
   backend:
     build: ./backend
@@ -18,7 +17,6 @@ services:
       - DB_HOST=database
       - DB_USER=root
       - DB_PASSWORD=1234
-    restart: always
 
   database:
     image: mysql:8.0
@@ -27,4 +25,3 @@ services:
       - MYSQL_DATABASE=landing_pagedb
     volumes:
       - ./mysql_data:/var/lib/mysql
-    restart: always
