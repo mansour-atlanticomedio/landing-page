@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 const sequelize = new Sequelize('landing_pagedb', 'root', '1234', {
-    host: 'localhost', 
+    host: 'database', 
     dialect: 'mysql'
 });
 
