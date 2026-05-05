@@ -49,7 +49,7 @@ const Programa = () => (
       image={hero}
     >
       <Button asChild size="lg" variant="outline" className="border-2 border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary-foreground hover:text-primary uppercase tracking-wider">
-        <Link to="/inscripcion">Inscríbete</Link>
+        <Link to="/jornadas/inscripcion">Inscríbete</Link>
       </Button>
     </PageHero>
 
@@ -132,7 +132,7 @@ const Programa = () => (
         </h2>
         <p className="mb-8 text-accent-foreground/90">Reserva tu plaza en las Jornadas 2026 de la Universidad del Atlántico Medio.</p>
         <Button asChild size="lg" variant="outline" className="border-2 border-accent-foreground text-accent-foreground bg-transparent hover:bg-accent-foreground hover:text-accent uppercase tracking-wider">
-          <Link to="/inscripcion">Inscribirme ahora</Link>
+          <Link to="/jornadas/inscripcion">Inscribirme ahora</Link>
         </Button>
       </div>
     </section>

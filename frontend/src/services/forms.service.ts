@@ -23,7 +23,6 @@ export async function createInscription(data: InscriptionProps) {
 export async function sendDocumentation(data: DocumentationProps) {
     const endpoint: string = '/documentation'
     try {
-        // Debemos usar FormData cuando hay archivos involucrados
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('email', data.email);
