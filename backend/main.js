@@ -27,14 +27,14 @@ app.post('/send-email', async (req, res) => {
     const { name, lastName, email, phone, profile, comments } = req.body;
 
     const mailOptions = {
-        from: `${name} ${lastName}`, 
+        from: email, 
         to: EMAIL_USER,        
         subject: `Nueva Inscripción: ${name}`,
-        text: `Nombre: ${name}
-               Apellido: ${lastName}
-               Email: ${email}
-               Teléfono: ${phone}
-               Perfil: ${profile}
+        text: `Nombre: ${name}\n
+               Apellido: ${lastName}\n
+               Email: ${email}\n
+               Teléfono: ${phone}\n
+               Perfil: ${profile}\n
                Comentarios: ${comments}`
     };
 
