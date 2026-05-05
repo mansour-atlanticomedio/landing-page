@@ -24,18 +24,23 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/send-email', async (req, res) => {
-    const { name, email, coments } = req.body;
+    const { name, lastName, email, phone, profile, comments } = req.body;
 
     const mailOptions = {
-        from: EMAIL_USER, 
-        to: EMAIL_USER,  
-        replyTo: email,       
+        from: `${name} ${lastName}`, 
+        to: EMAIL_USER,        
         subject: `Nueva Inscripción: ${name}`,
-        text: `El alumno ${name} con correo ${email} dice: ${coments}`
+        text: `Nombre: ${name}
+               Apellido: ${lastName}
+               Email: ${email}
+               Teléfono: ${phone}
+               Perfil: ${profile}
+               Comentarios: ${comments}`
     };
 
     try {
         await transporter.sendMail(mailOptions);
+        console.log('Correo enviado!')
         res.status(200).json({ message: "Enviado con éxito" });
     } catch (error) {
         console.error("Error de autenticación/envío:", error);

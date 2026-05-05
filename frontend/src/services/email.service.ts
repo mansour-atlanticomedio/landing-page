@@ -1,15 +1,13 @@
-export async function sendEmail() {
+import { InscriptionProps } from "@/types/inscription.type";
+
+export async function sendEmail(data : InscriptionProps) {
     const API_URI: string = 'http://192.168.0.157:3000'; 
     
     try {
         const response = await fetch(`${API_URI}/send-email`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: 'Name test',
-                subject: 'Hello from frontend',
-                text: 'This is a test email.'
-            })
+            body: JSON.stringify(data)
         });
 
         if (!response.ok) {

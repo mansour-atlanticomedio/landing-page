@@ -4,5 +4,5 @@ export type InscriptionProps = {
     email: string,
     phone: string,
     profile: string,
-    coments?: string
+    comments?: string
 }

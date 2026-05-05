@@ -31,20 +31,20 @@ const Inscripcion = () => {
 
     const form = e.currentTarget
 
-    // const fd = new FormData(e.currentTarget);
-    // const data: InscriptionProps = {
-    //   name: fd.get("nombre").toString(),
-    //   lastName: fd.get("apellidos").toString(),
-    //   email: fd.get("email").toString(),
-    //   phone: fd.get("telefono").toString(),
-    //   profile: fd.get("perfil").toString(),
-    //   coments: fd.get("comentarios").toString(),
-    // };
+    const fd = new FormData(e.currentTarget);
+    const data: InscriptionProps = {
+      name: fd.get("nombre").toString(),
+      lastName: fd.get("apellidos").toString(),
+      email: fd.get("email").toString(),
+      phone: fd.get("telefono").toString(),
+      profile: fd.get("perfil").toString(),
+      comments: fd.get("comentarios").toString(),
+    };
 
 
     try {
       setLoading(true);
-      await sendEmail();
+      await sendEmail(data);
       setLoading(false);
       toast.success("¡Inscripción enviada! Te contactaremos por email.");
       form.reset()
@@ -94,11 +94,6 @@ const Inscripcion = () => {
                     <SelectItem value="otro">Otro</SelectItem>
                   </SelectContent>
                 </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="institucion">Institución / Empresa</Label>
-                <Input id="institucion" name="institucion" maxLength={150} />
               </div>
 
               <div className="space-y-2">

@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { FileText, CheckCircle2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import hero from "@/assets/campus.jpg";
-import { DocumentationProps } from "@/types/documentation.type";
 import { sendEmail } from "@/services/email.service";
 
 const docs = [
@@ -32,13 +31,6 @@ const Documentacion = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const data : DocumentationProps = {
-      name: fd.get("nombre").toString(),
-      email: fd.get("email").toString(),
-      files: files,
-      reference: fd.get("referencia").toString(),
-      notes: fd.get("notas").toString(),
-    };
 
     if (!files || files.length === 0) {
       toast.error("Sube al menos un archivo");
