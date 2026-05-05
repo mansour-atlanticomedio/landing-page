@@ -28,15 +28,18 @@ const Inscripcion = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const data: InscriptionProps = {
-      name: fd.get("nombre").toString(),
-      lastName: fd.get("apellidos").toString(),
-      email: fd.get("email").toString(),
-      phone: fd.get("telefono").toString(),
-      profile: fd.get("perfil").toString(),
-      coments: fd.get("comentarios").toString(),
-    };
+
+    const form = e.currentTarget
+
+    // const fd = new FormData(e.currentTarget);
+    // const data: InscriptionProps = {
+    //   name: fd.get("nombre").toString(),
+    //   lastName: fd.get("apellidos").toString(),
+    //   email: fd.get("email").toString(),
+    //   phone: fd.get("telefono").toString(),
+    //   profile: fd.get("perfil").toString(),
+    //   coments: fd.get("comentarios").toString(),
+    // };
 
 
     try {
@@ -44,10 +47,9 @@ const Inscripcion = () => {
       await sendEmail();
       setLoading(false);
       toast.success("¡Inscripción enviada! Te contactaremos por email.");
-      e.currentTarget.reset();
+      form.reset()
     } catch (error) {
       toast.error("Error al crear la inscripcion: ", error);
-      e.currentTarget.reset();
     }
   };
 

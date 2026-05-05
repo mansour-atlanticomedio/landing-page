@@ -6,7 +6,7 @@ export async function sendEmail() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                user: 'anonymous',
+                name: 'Name test',
                 subject: 'Hello from frontend',
                 text: 'This is a test email.'
             })

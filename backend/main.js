@@ -5,19 +5,21 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 const PORT = 3000;
-const EMAIL_UNI = process.env.EMAIL_USER;
-const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
+const EMAIL_UNI = EMAIL_USER;
+const EMAIL_PASSWORD = EMAIL_PASSWORD;
 
 app.use(cors());
 app.use(express.json());
+
+console.log("Configurando SMTP para:", EMAIL_USER);
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-        user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_PASSWORD  
+        user: EMAIL_USER, 
+        pass: EMAIL_PASSWORD  
     }
 });
 
@@ -25,8 +27,8 @@ app.post('/send-email', async (req, res) => {
     const { name, email, coments } = req.body;
 
     const mailOptions = {
-        from: process.env.EMAIL_USER, 
-        to: process.env.EMAIL_USER,  
+        from: EMAIL_USER, 
+        to: EMAIL_USER,  
         replyTo: email,       
         subject: `Nueva Inscripción: ${name}`,
         text: `El alumno ${name} con correo ${email} dice: ${coments}`
