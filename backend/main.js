@@ -14,12 +14,16 @@ app.use(express.json());
 console.log("Configurando SMTP para:", EMAIL_USER);
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    host: 'smtp.office365.com',
+    port: 587,
+    secure: false,
     auth: {
         user: EMAIL_USER, 
         pass: EMAIL_PASSWORD  
+    },
+    tls: {
+        ciphers: 'SSLv3',
+        rejectUnauthorized: false
     }
 });
 
