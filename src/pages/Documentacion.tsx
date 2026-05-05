@@ -8,8 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { FileText, CheckCircle2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import hero from "@/assets/campus.jpg";
-import { sendDocumentation } from "@/services/forms.service";
 import { DocumentationProps } from "@/types/documentation.type";
+import { sendEmail } from "@/services/email.service";
 
 const docs = [
   "DNI / NIE / Pasaporte en vigor (PDF)",
@@ -46,7 +46,7 @@ const Documentacion = () => {
     }
     try {
           setLoading(true);
-          const result = sendDocumentation(data)
+          const result = sendEmail()
           setLoading(false);
           toast.success(`Documentacion enviada correctamente`);
           e.currentTarget.reset();

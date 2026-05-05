@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import hero from "@/assets/campus.jpg";
 import { InscriptionProps } from "@/types/inscription.type";
-import { createInscription } from "@/services/forms.service";
+import { sendEmail } from "@/services/email.service";
 
 const schema = z.object({
   nombre: z.string().trim().min(2, "Nombre demasiado corto").max(80),
@@ -41,7 +41,7 @@ const Inscripcion = () => {
 
     try {
       setLoading(true);
-      const result = createInscription(data)
+      const result = sendEmail();
       setLoading(false);
       toast.success("¡Inscripción enviada! Te contactaremos por email.");
       e.currentTarget.reset();
