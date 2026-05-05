@@ -1,5 +1,6 @@
 export async function sendEmail() {
-    const response = await fetch('/send-email', {
+    const API_URI : string = 'localhost:3000'
+    const response = await fetch(API_URI+'/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -26,7 +26,7 @@ const schema = z.object({
 const Inscripcion = () => {
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const data: InscriptionProps = {
@@ -41,7 +41,7 @@ const Inscripcion = () => {
 
     try {
       setLoading(true);
-      const result = sendEmail();
+      await sendEmail();
       setLoading(false);
       toast.success("¡Inscripción enviada! Te contactaremos por email.");
       e.currentTarget.reset();

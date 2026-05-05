@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:80"
+    restart: always
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - EMAIL_USER=mansour.lolo@atlanticomedio.es
+      - EMAIL_PASSWORD=@Ndamelo48
+    restart: always
+
+  # database:
+  #   image: mysql:8.0
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=1234
+  #     - MYSQL_DATABASE=landing_pagedb
+  #   volumes:
+  #     - ./mysql_data:/var/lib/mysql
+  #   restart: always
