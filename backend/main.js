@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
         pass: EMAIL_PASSWORD  
     },
     tls: {
-        ciphers: 'SSLv3',
+        ciphers: 'TLSv1.2',
         rejectUnauthorized: false
     }
 });
@@ -31,7 +31,7 @@ app.post('/send-email', async (req, res) => {
     const { name, lastName, email, phone, profile, comments } = req.body;
 
     const mailOptions = {
-        from: email, 
+        from: EMAIL_USER, 
         to: EMAIL_USER,        
         subject: `Nueva Inscripción: ${name}`,
         text: `Nombre: ${name}\n
