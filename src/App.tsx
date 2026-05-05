@@ -20,10 +20,10 @@ const App = () => (
       <BrowserRouter basename="/jornadas" >
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/programa" element={<Programa />} />
-            <Route path="/inscripcion" element={<Inscripcion />} />
-            <Route path="/documentacion" element={<Documentacion />} />
-            <Route path="/contacto" element={<Contacto />} />
+            <Route index element={<Programa />} />
+            <Route path="inscripcion" element={<Inscripcion />} />
+            <Route path="documentacion" element={<Documentacion />} />
+            <Route path="contacto" element={<Contacto />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
