@@ -6,6 +6,7 @@ const app = express();
 
 const PORT = 3000;
 const EMAIL_UNI = process.env.EMAIL_USER;
+const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 
 app.use(cors());
 app.use(express.json());
@@ -16,7 +17,7 @@ const transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_PASS  
+        pass: process.env.EMAIL_PASSWORD  
     }
 });
 

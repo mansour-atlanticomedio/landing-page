@@ -12,8 +12,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - EMAIL_USER=mansour.lolo@atlanticomedio.es
-      - EMAIL_PASSWORD=@Ndamelo48
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
     restart: always
 
   # database:

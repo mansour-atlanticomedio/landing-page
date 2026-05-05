@@ -26,8 +26,8 @@ const Layout = () => {
       </div>
 
       {/* Header */}
-      <header className="bg-background border-b border-border sticky top-0 z-40 mx-5 w-screen">
-        <div className="w-full mx-auto px-6 py-4 flex items-center justify-between gap-6">
+      <header className="bg-background border-b border-border sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="UNAMED" width={130} />
           </Link>
@@ -69,8 +69,8 @@ const Layout = () => {
       </main>
 
       {/* Footer */}
-      <footer className="max-w-max bg-primary text-primary-foreground" >
-        <div className="w-full my-36 mx-14 grid md:grid-cols-3 gap-10">
+      <footer className=" bg-primary text-primary-foreground" >
+        <div className="max-w-7xl my-36 mx-14 grid md:grid-cols-3 gap-10">
           <div>
             <img src={logo_white} alt="UNAMED" width={130} />
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
