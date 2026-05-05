@@ -5,37 +5,39 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 const PORT = 3000;
-const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
+const EMAIL_UNI = process.env.EMAIL_USER;
 
 app.use(cors());
 app.use(express.json());
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
-        user: EMAIL_USER,
-        pass: EMAIL_PASS
+        user: process.env.EMAIL_USER, 
+        pass: process.env.EMAIL_PASS  
     }
 });
 
 app.post('/send-email', async (req, res) => {
+    const { name, email, coments } = req.body;
+
+    const mailOptions = {
+        from: process.env.EMAIL_USER, 
+        to: process.env.EMAIL_USER,  
+        replyTo: email,       
+        subject: `Nueva Inscripción: ${name}`,
+        text: `El alumno ${name} con correo ${email} dice: ${coments}`
+    };
+
     try {
-        const mailOptions = {
-            from: EMAIL_USER,
-            to: 'email-de-la-universidad@ejemplo.com',
-            subject: `Nueva Inscripción: ${req.body.name} ${req.body.lastName}`,
-            text: `Se ha recibido una nueva inscripción:\n\nNombre: ${req.body.name}\nEmail: ${req.body.email}\nPerfil: ${req.body.profile}\nComentarios: ${req.body.coments}`
-        };
-
         await transporter.sendMail(mailOptions);
-
-        res.status(201).json({ message: "Guardado y enviado con éxito", data: newInscription });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Error en el servidor", details: err.message });
+        res.status(200).json({ message: "Enviado con éxito" });
+    } catch (error) {
+        console.error("Error de autenticación/envío:", error);
+        res.status(500).json({ error: "No se pudo enviar", detalle: error.message });
     }
 });
-
 
 app.listen(PORT, () => console.log(`Backend escuchando en puerto ${PORT}`));

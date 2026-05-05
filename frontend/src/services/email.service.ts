@@ -1,15 +1,28 @@
 export async function sendEmail() {
-    const API_URI : string = 'localhost:3000'
-    const response = await fetch(API_URI+'/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            to: process.env.EMAIL_UNIVERSITY,
-            subject: 'Hello from frontend',
-            text: 'This is a test email.'
-        })
-    });
+    const API_URI: string = 'http://192.168.0.157:3000'; 
+    
+    try {
+        const response = await fetch(`${API_URI}/send-email`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user: 'anonymous',
+                subject: 'Hello from frontend',
+                text: 'This is a test email.'
+            })
+        });
 
-    const result = await response.json();
-    console.log(result);
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Error en la petición');
+        }
+
+        const result = await response.json();
+        console.log("Éxito:", result);
+        return result;
+
+    } catch (error) {
+        console.error("Error al enviar email:", error);
+        throw error;
+    }
 }
