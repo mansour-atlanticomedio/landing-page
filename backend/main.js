@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 const PORT = 3000;
-const EMAIL_USER = process.env.EMAIL_USER; 
+const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
 
 app.use(cors());
@@ -37,6 +37,5 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
-sequelize.sync().then(() => {
-    app.listen(PORT, () => console.log(`Backend escuchando en puerto ${PORT}`));
-});
+
+app.listen(PORT, () => console.log(`Backend escuchando en puerto ${PORT}`));
