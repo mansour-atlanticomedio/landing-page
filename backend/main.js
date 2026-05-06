@@ -1,8 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const multer = require('multer')
+
 
 const app = express();
+const upload = multer()
 
 const PORT = 3000;
 const EMAIL_USER_FROM = process.env.EMAIL_USER_FROM;
@@ -51,6 +54,59 @@ app.post('/send-email', async (req, res) => {
     } catch (error) {
         console.error("Error de autenticación/envío:", error);
         res.status(500).json({ error: "No se pudo enviar", detalle: error.message });
+    }
+});
+
+app.post('/send-message', async (req, res) => {
+    const { name, email, about, message } = req.body;
+
+    const mailOptions = {
+        from: EMAIL_USER_FROM, 
+        to: EMAIL_USER_TO,       
+        replyTo: email, 
+        subject: about,
+        text: `Nombre: ${name}\n
+               Asunto: ${about}\n
+               Email: ${email}\n
+               Mensaje: ${comments}`
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        console.log('Mensaje enviado!')
+        res.status(200).json({ message: "Enviado con éxito" });
+    } catch (error) {
+        console.error("Error de autenticación/envío:", error);
+        res.status(500).json({ error: "No se pudo enviar", detalle: error.message });
+    }
+});
+
+app.post('/send-documentation', upload.array('files'), async (req, res) => {
+
+    const { name, email, reference, notes } = req.body;
+    const files = req.files; 
+
+    const attachments = files.map(file => ({
+        filename: file.originalname,
+        content: file.buffer,
+        contentType: file.mimetype
+    }));
+
+    const mailOptions = {
+        from: EMAIL_USER_FROM,
+        to: EMAIL_USER_TO,
+        replyTo: email,
+        subject: `Documentación de ${name} - Ref: ${reference}`,
+        text: `Nombre: ${name}\nEmail: ${email}\nReferencia: ${reference}\nNotas: ${notes}`,
+        attachments: attachments
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: "Enviado con éxito" });
+    } catch (error) {
+        console.error("Error al enviar mail:", error);
+        res.status(500).json({ error: "No se pudo enviar el correo" });
     }
 });
 
