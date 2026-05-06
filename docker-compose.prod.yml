@@ -1,26 +1,18 @@
 services:
   frontend:
-    build: 
+    build:
       context: ./frontend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - "8081:5173"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    environment:
-    - WATCHPACK_POLLING=true
+      - "8081:80"
     restart: always
 
   backend:
-    build: 
+    build:
       context: ./backend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
     environment:
       - EMAIL_USER_FROM=${EMAIL_USER_FROM}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}

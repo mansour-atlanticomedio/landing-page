@@ -68,7 +68,7 @@ app.post('/send-message', async (req, res) => {
         text: `Nombre: ${name}\n
                Asunto: ${about}\n
                Email: ${email}\n
-               Mensaje: ${comments}`
+               Mensaje: ${message}`
     };
 
     try {
