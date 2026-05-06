@@ -12,6 +12,8 @@ RUN sed -i \
     -e '/<Directory "\/usr\/local\/apache2\/htdocs">/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' \
     conf/httpd.conf
 
+RUN echo "FallbackResource /jornadas/index.html" >> /usr/local/apache2/conf/httpd.conf
+
 RUN rm -rf /usr/local/apache2/htdocs/*
 RUN mkdir -p /usr/local/apache2/htdocs/jornadas
 
