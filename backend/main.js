@@ -32,7 +32,8 @@ app.post('/send-email', async (req, res) => {
 
     const mailOptions = {
         from: EMAIL_USER, 
-        to: EMAIL_USER,        
+        to: EMAIL_USER,       
+        replyTo: email, 
         subject: `Nueva Inscripción: ${name}`,
         text: `Nombre: ${name}\n
                Apellido: ${lastName}\n

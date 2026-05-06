@@ -5,12 +5,16 @@ services:
     build: ./frontend
     ports:
       - "8081:80"
+    volumes:
+      - ./frontend:/app
     restart: always
 
   backend:
     build: ./backend
     ports:
       - "3000:3000"
+    volumes:
+      - ./backend:/app
     environment:
       - EMAIL_USER=${EMAIL_USER}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
