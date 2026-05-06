@@ -15,22 +15,23 @@ const Contacto = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const fd = new FormData(e.currentTarget);
-    const data : ContactProps = {
-      name: fd.get("nombre").toString(),
+    const data: ContactProps = {
+      name: fd.get("name").toString(),
       email: fd.get("email").toString(),
-      about: fd.get("asunto").toString(),
-      message: fd.get("mensaje").toString(),
+      about: fd.get("about").toString(),
+      message: fd.get("message").toString(),
     };
-    
+
     try {
-          setLoading(true);
-          await sendMessage(data);
-          setLoading(false);
-          toast.success("Mensaje enviado. Te responderemos lo antes posible");
-        } catch (error) {
-          toast.error("Error al enviar el mensaje ", error);
-        }
+      setLoading(true);
+      await sendMessage(data);
+      setLoading(false);
+      toast.success("Mensaje enviado. Te responderemos lo antes posible");
+    } catch (error) {
+      toast.error("Error al enviar el mensaje ", error);
+    }
   };
 
   const formEntries: SimpleFormProps[] = [
@@ -109,7 +110,7 @@ const Contacto = () => {
             </ul>
           </Info>
 
-          <SimpleForm title="Envíanos un mensaje" formEntries={formEntries} onSubmit={onSubmit} loading={loading} />
+          <SimpleForm title="Envíanos un mensaje" formEntries={formEntries} onSubmit={onSubmit} loading={loading}  />
 
         </div>
       </section>

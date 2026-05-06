@@ -117,7 +117,7 @@ const Documentacion = () => {
             </div>
           </Info>
 
-          <SimpleForm title="Subir documentación" formEntries={formEntries} onSubmit={onSubmit} files={files} fileHandler={setFiles} />
+          <SimpleForm title="Subir documentación" formEntries={formEntries} onSubmit={onSubmit} loading={loading} files={files} fileHandler={setFiles} />
         </div>
       </section>
     </>
