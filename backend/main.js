@@ -12,7 +12,7 @@ const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 app.use(cors());
 app.use(express.json());
 
-console.log("Configurando SMTP para:", EMAIL_USER);
+console.log("Configurando SMTP para:", EMAIL_USER_FROM);
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.office365.com',
