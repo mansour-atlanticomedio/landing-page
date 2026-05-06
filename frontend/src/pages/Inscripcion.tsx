@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import hero from "@/assets/campus.jpg";
 import { InscriptionProps } from "@/types/inscription.type";
-import { sendEmail } from "@/services/email.service";
+import { sendEmail } from "@/services/api.service";
 
 const schema = z.object({
   nombre: z.string().trim().min(2, "Nombre demasiado corto").max(80),

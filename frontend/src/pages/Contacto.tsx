@@ -7,36 +7,30 @@ import Info from "@/components/Info";
 import SimpleForm from "@/components/SimpleForm";
 import { SimpleFormProps } from "@/types/form.type";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-
-const schema = z.object({
-  nombre: z.string().trim().min(2, "Nombre demasiado corto").max(120),
-  email: z.string().trim().email("Email no válido").max(255),
-  asunto: z.string().trim().min(3, "Asunto demasiado corto").max(150),
-  mensaje: z.string().trim().min(10, "Mensaje demasiado corto").max(1000),
-});
+import { ContactProps } from "@/types/Contact.type";
+import { sendMessage } from "@/services/api.service";
 
 const Contacto = () => {
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const r = schema.safeParse({
-      nombre: fd.get("nombre"),
-      email: fd.get("email"),
-      asunto: fd.get("asunto"),
-      mensaje: fd.get("mensaje"),
-    });
-    if (!r.success) {
-      toast.error(r.error.errors[0].message);
-      return;
-    }
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Mensaje enviado. Te responderemos lo antes posible.");
-      e.currentTarget.reset();
-    }, 800);
+    const data : ContactProps = {
+      name: fd.get("nombre").toString(),
+      email: fd.get("email").toString(),
+      about: fd.get("asunto").toString(),
+      message: fd.get("mensaje").toString(),
+    };
+    
+    try {
+          setLoading(true);
+          await sendMessage(data);
+          setLoading(false);
+          toast.success("Mensaje enviado. Te responderemos lo antes posible");
+        } catch (error) {
+          toast.error("Error al enviar el mensaje ", error);
+        }
   };
 
   const formEntries: SimpleFormProps[] = [

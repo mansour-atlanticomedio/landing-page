@@ -8,11 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { FileText, CheckCircle2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import hero from "@/assets/campus.jpg";
-import { sendEmail } from "@/services/email.service";
+import { sendDocumentation, sendEmail } from "@/services/api.service";
 import { InscriptionProps } from "@/types/inscription.type";
 import { SimpleFormProps } from "@/types/form.type";
 import SimpleForm from "@/components/SimpleForm";
 import Info from "@/components/Info";
+import { DocumentationProps } from "@/types/Documentation.type";
 
 
 const docs = [
@@ -33,25 +34,32 @@ const Documentacion = () => {
   const [files, setFiles] = useState<FileList | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  
+  if (!files || files.length === 0) {
+    toast.error("Sube al menos un archivo");
+    return;
+  }
 
-    if (!files || files.length === 0) {
-      toast.error("Sube al menos un archivo");
-      return;
-    }
-    try {
-      setLoading(true);
-      // const result = sendEmail()
-      setLoading(false);
-      toast.success(`Documentacion enviada correctamente`);
-      e.currentTarget.reset();
-    } catch (error) {
-      toast.error("Error al enviar la documentacion ", error);
-      e.currentTarget.reset();
-    }
-  };
+  const fd = new FormData(e.currentTarget);
+  
+  Array.from(files).forEach((file) => {
+    fd.append("files", file);
+  });
+
+  try {
+    setLoading(true);
+    await sendDocumentation(fd);
+    setLoading(false);
+    toast.success(`Documentación enviada correctamente`);
+    e.currentTarget.reset();
+    setFiles(null);
+  } catch (error) {
+    setLoading(false);
+    toast.error("Error al enviar la documentación");
+  }
+};
 
   const formEntries: SimpleFormProps[] = [
     {
