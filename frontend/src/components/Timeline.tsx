@@ -1,13 +1,30 @@
 import { Calendar } from "lucide-react";
 
 export default function Timeline() {
-    const programa = [
-  { day: "Día 1", title: "Apertura institucional", items: ["Bienvenida del Rectorado", "Presentación de los grupos de investigación oficiales", "Conferencia inaugural: Retos del I+D+i en Canarias"] },
-  { day: "Día 2", title: "Innovación y empresa", items: ["Mesa redonda público-privada", "Casos de éxito en transferencia", "Networking con empresas locales"] },
-  { day: "Día 3", title: "Talleres y cierre", items: ["Taller de redacción de proyectos europeos (Horizon)", "Taller de proyectos nacionales", "Acto de clausura y entrega de reconocimientos"] },
-];
-    return (
-        <section className="py-20">
+  const programa = [
+    {
+      day: "Día 1",
+      title: " Construyendo la investigación",
+      items: [
+        "Inauguración institucional",
+        "Carrera investigadora",
+        "Presentación de proyectos y networking",
+        "Inteligencia artificial aplicada a la docencia universitaria",
+      ]
+    },
+    {
+      day: "Día 2",
+      title: "Innovación y transferencia",
+      items: [
+        "Posicionamiento y reputación",
+        "Divulgación científica",
+        "Estrategias de innovación docente",
+        "Networking",
+      ]
+    },
+  ];
+  return (
+    <section className="py-20">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="section-title">Programa</h2>
         <div className="mt-12 space-y-6">
@@ -30,5 +47,5 @@ export default function Timeline() {
         </div>
       </div>
     </section>
-    )
+  )
 }

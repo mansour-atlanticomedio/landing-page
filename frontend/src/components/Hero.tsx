@@ -13,8 +13,8 @@ const Hero = ({ title, subtitle, image, children }: HeroProps) => (
     style={{ backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
   >
     <div className="absolute inset-0 hero-overlay" />
-    <div className="relative z-10 max-w-3xl px-6 py-20">
-      <h1 className="font-display text-3xl md:text-5xl font-bold uppercase tracking-wide text-primary-foreground mb-4">
+    <div className="relative z-10 max-w-4xl px-6 py-20">
+      <h1 className=" font-display text-3xl md:text-5xl font-bold uppercase tracking-wide text-primary-foreground mb-4">
         {title}
       </h1>
       {subtitle && <p className="text-lg md:text-xl text-primary-foreground/90">{subtitle}</p>}

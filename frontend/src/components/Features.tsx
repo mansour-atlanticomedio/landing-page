@@ -22,7 +22,7 @@ export default function Feature() {
         {
             icon: Microscope,
             title: "Ciencia abierta",
-            text: "Repositorio institucional, estándares HRS4R y acceso libre a los avances científicos.",
+            text: "Repositorio institucional y acceso libre a los avances científicos.",
         },
     ];
 
