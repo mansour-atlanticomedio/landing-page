@@ -15,6 +15,7 @@ services:
       - "3000:3000"
     volumes:
       - ./backend:/app
+      - /app/node_modules
     environment:
       - EMAIL_USER=${EMAIL_USER}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}

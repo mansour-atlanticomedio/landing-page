@@ -5,7 +5,8 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 const PORT = 3000;
-const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_USER_FROM = process.env.EMAIL_USER_FROM;
+const EMAIL_USER_TO = process.env.EMAIL_USER_TO;
 const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 
 app.use(cors());
@@ -31,8 +32,8 @@ app.post('/send-email', async (req, res) => {
     const { name, lastName, email, phone, profile, comments } = req.body;
 
     const mailOptions = {
-        from: EMAIL_USER, 
-        to: EMAIL_USER,       
+        from: EMAIL_USER_FROM, 
+        to: EMAIL_USER_TO,       
         replyTo: email, 
         subject: `Nueva Inscripción: ${name}`,
         text: `Nombre: ${name}\n
