@@ -17,8 +17,9 @@ services:
       - ./backend:/app
       - /app/node_modules
     environment:
-      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_USER_FROM=${EMAIL_USER_FROM}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_USER_TO=${EMAIL_USER_TO}
     restart: always
 
   # database:
