@@ -12,6 +12,7 @@ import { sendEmail } from "@/services/email.service";
 import { InscriptionProps } from "@/types/inscription.type";
 import { SimpleFormProps } from "@/types/form.type";
 import SimpleForm from "@/components/SimpleForm";
+import Info from "@/components/Info";
 
 
 const docs = [
@@ -41,41 +42,44 @@ const Documentacion = () => {
       return;
     }
     try {
-          setLoading(true);
-          // const result = sendEmail()
-          setLoading(false);
-          toast.success(`Documentacion enviada correctamente`);
-          e.currentTarget.reset();
-        } catch (error) {
-          toast.error("Error al enviar la documentacion ", error);
-          e.currentTarget.reset();
-        }
+      setLoading(true);
+      // const result = sendEmail()
+      setLoading(false);
+      toast.success(`Documentacion enviada correctamente`);
+      e.currentTarget.reset();
+    } catch (error) {
+      toast.error("Error al enviar la documentacion ", error);
+      e.currentTarget.reset();
+    }
   };
 
-  const formEntries : SimpleFormProps[] = [
-      {
-        label: 'name',
-        htmlFor: 'Nombre completo',
-      },
-      {
-        label: 'email',
-        htmlFor: 'Email',
-      },
-      {
-        label: 'reference',
-        htmlFor: 'Referencia de inscripción',
-      },
-      {
-        label: 'files',
-        htmlFor: 'Archivos',
-        isFileUpload: true
-      },
-      {
-        label: 'notes',
-        htmlFor: 'Notas',
-        isTextArea: true,
-      }
-    ] 
+  const formEntries: SimpleFormProps[] = [
+    {
+      label: 'name',
+      htmlFor: 'Nombre completo',
+      isRequired: true
+    },
+    {
+      label: 'email',
+      htmlFor: 'Email',
+      isRequired: true
+    },
+    {
+      label: 'reference',
+      htmlFor: 'Referencia de inscripción',
+    },
+    {
+      label: 'files',
+      htmlFor: 'Archivos',
+      isFileUpload: true,
+      isRequired: true
+    },
+    {
+      label: 'notes',
+      htmlFor: 'Notas',
+      isTextArea: true,
+    }
+  ]
 
   return (
     <>
@@ -83,13 +87,11 @@ const Documentacion = () => {
 
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="font-display text-2xl font-semibold mb-2">Documentos necesarios</h2>
-            <div className="w-12 h-1 bg-accent mb-6" />
-            <p className="text-muted-foreground mb-6">
-              Para completar tu participación en las Jornadas debes aportar la siguiente documentación.
-              Todos los archivos deben enviarse en formato PDF y no superar los 10 MB por archivo.
-            </p>
+          <Info
+            title="Documentos necesarios"
+            subtitle="Para completar tu participación en las Jornadas debes aportar la siguiente documentación.
+              Todos los archivos deben enviarse en formato PDF y no superar los 10 MB por archivo."
+          >
             <ul className="space-y-3">
               {docs.map((d) => (
                 <li key={d} className="flex gap-3 items-start">
@@ -105,58 +107,9 @@ const Documentacion = () => {
               </div>
               Hasta 15 días antes del inicio de las Jornadas. Documentación tardía no garantiza participación.
             </div>
-          </div>
-          
+          </Info>
 
-          <div className="bg-card border border-border rounded-md p-8 shadow-[var(--shadow-card)] h-fit">
-            <h3 className="font-display text-xl font-semibold mb-6">Subir documentación</h3>
-            <form onSubmit={onSubmit} className="space-y-5">
-              <div className="space-y-2">
-                <Label htmlFor="nombre">Nombre completo *</Label>
-                <Input id="nombre" name="nombre" required maxLength={120} />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
-                <Input id="email" name="email" type="email" required maxLength={255} />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="referencia">Referencia de inscripción</Label>
-                <Input id="referencia" name="referencia" maxLength={60} placeholder="Opcional" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="files">Archivos *</Label>
-                <label
-                  htmlFor="files"
-                  className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md py-8 cursor-pointer hover:border-accent hover:bg-secondary transition-colors"
-                >
-                  <Upload className="w-8 h-8 text-accent mb-2" />
-                  <span className="text-sm text-muted-foreground">
-                    {files && files.length > 0 ? `${files.length} archivo(s) seleccionados` : "Haz clic para seleccionar archivos PDF"}
-                  </span>
-                  <input
-                    id="files"
-                    type="file"
-                    multiple
-                    accept=".pdf"
-                    className="hidden"
-                    onChange={(e) => setFiles(e.target.files)}
-                  />
-                </label>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="notas">Notas</Label>
-                <Textarea id="notas" name="notas" rows={3} maxLength={500} />
-              </div>
-
-              <Button type="submit" disabled={loading} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground uppercase tracking-wider font-semibold">
-                {loading ? "Enviando..." : "Enviar documentación"}
-              </Button>
-            </form>
-          </div>
-
-          <SimpleForm formEntries={formEntries} onSubmit={onSubmit} files={files} fileHandler={setFiles} />
+          <SimpleForm title="Subir documentación" formEntries={formEntries} onSubmit={onSubmit} files={files} fileHandler={setFiles} />
         </div>
       </section>
     </>

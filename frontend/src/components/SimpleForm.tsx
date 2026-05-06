@@ -7,6 +7,7 @@ import { Upload } from "lucide-react";
 import { ChangeEvent, FormEvent, ReactEventHandler, useState } from "react";
 
 interface SimpleFormInterface {
+    title?: string,
     formEntries: SimpleFormProps[],
     onSubmit: (e: FormEvent<HTMLFormElement>) => void,
     loading?: boolean,
@@ -14,23 +15,23 @@ interface SimpleFormInterface {
     files?: FileList
 }
 
-export default function SimpleForm({ formEntries, onSubmit, loading, files, fileHandler }: SimpleFormInterface) {
+export default function SimpleForm({ title, formEntries, onSubmit, loading, files, fileHandler }: SimpleFormInterface) {
 
     return (
         <div className="bg-card border border-border rounded-md p-8 shadow-[var(--shadow-card)]">
-            <h3 className="font-display text-xl font-semibold mb-6">Envíanos un mensaje</h3>
+            <h3 className="font-display text-xl font-semibold mb-6">{title || ''}</h3>
             <form onSubmit={(e) => onSubmit(e)} className="space-y-5">
                 {
                     formEntries.map((entry) =>
                         entry.isTextArea ? (
                             <div className="space-y-2">
-                                <Label htmlFor={entry.label}>{entry.htmlFor} *</Label>
+                                <Label htmlFor={entry.label}>{entry.htmlFor} { entry.isRequired && '*'}</Label>
                                 <Textarea id={entry.label} name={entry.label} rows={4} required maxLength={1000} />
                             </div>
 
                         ) : entry.isFileUpload ? (
                             <div className="space-y-2">
-                                <Label htmlFor={entry.label}>{entry.htmlFor} *</Label>
+                                <Label htmlFor={entry.label}>{entry.htmlFor} { entry.isRequired && '*'}</Label>
                                 <label
                                     htmlFor={entry.label}
                                     className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md py-8 cursor-pointer hover:border-accent hover:bg-secondary transition-colors"
@@ -51,7 +52,7 @@ export default function SimpleForm({ formEntries, onSubmit, loading, files, file
                             </div>
                         ) : (
                             <div className="space-y-2">
-                                <Label htmlFor={entry.label}>{entry.htmlFor} *</Label>
+                                <Label htmlFor={entry.label}>{entry.htmlFor} { entry.isRequired && '*'}</Label>
                                 <Input id={entry.label} name={entry.label} />
                             </div>
 
