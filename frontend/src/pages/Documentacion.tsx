@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
-import PageHero from "@/components/PageHero";
+import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,10 @@ import { FileText, CheckCircle2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import hero from "@/assets/campus.jpg";
 import { sendEmail } from "@/services/email.service";
+import { InscriptionProps } from "@/types/inscription.type";
+import { SimpleFormProps } from "@/types/form.type";
+import SimpleForm from "@/components/SimpleForm";
+
 
 const docs = [
   "DNI / NIE / Pasaporte en vigor (PDF)",
@@ -38,7 +42,7 @@ const Documentacion = () => {
     }
     try {
           setLoading(true);
-          const result = sendEmail()
+          // const result = sendEmail()
           setLoading(false);
           toast.success(`Documentacion enviada correctamente`);
           e.currentTarget.reset();
@@ -48,9 +52,34 @@ const Documentacion = () => {
         }
   };
 
+  const formEntries : SimpleFormProps[] = [
+      {
+        label: 'name',
+        htmlFor: 'Nombre completo',
+      },
+      {
+        label: 'email',
+        htmlFor: 'Email',
+      },
+      {
+        label: 'reference',
+        htmlFor: 'Referencia de inscripción',
+      },
+      {
+        label: 'files',
+        htmlFor: 'Archivos',
+        isFileUpload: true
+      },
+      {
+        label: 'notes',
+        htmlFor: 'Notas',
+        isTextArea: true,
+      }
+    ] 
+
   return (
     <>
-      <PageHero title="Documentación" subtitle="Información y entrega de documentación requerida" image={hero} />
+      <Hero title="Documentación" subtitle="Información y entrega de documentación requerida" image={hero} />
 
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12">
@@ -77,6 +106,7 @@ const Documentacion = () => {
               Hasta 15 días antes del inicio de las Jornadas. Documentación tardía no garantiza participación.
             </div>
           </div>
+          
 
           <div className="bg-card border border-border rounded-md p-8 shadow-[var(--shadow-card)] h-fit">
             <h3 className="font-display text-xl font-semibold mb-6">Subir documentación</h3>
@@ -125,6 +155,8 @@ const Documentacion = () => {
               </Button>
             </form>
           </div>
+
+          <SimpleForm formEntries={formEntries} onSubmit={onSubmit} files={files} fileHandler={setFiles} />
         </div>
       </section>
     </>

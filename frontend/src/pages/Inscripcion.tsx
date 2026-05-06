@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
-import PageHero from "@/components/PageHero";
+import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -55,7 +55,8 @@ const Inscripcion = () => {
 
   return (
     <>
-      <PageHero title="Inscripción" subtitle="Completa el formulario para reservar tu plaza" image={hero} />
+      <Hero title="Inscripción" subtitle="Completa el formulario para reservar tu plaza" image={hero} />
+      
       <section className="py-16">
         <div className="max-w-2xl mx-auto px-6">
           <div className="bg-card border border-border rounded-md p-8 shadow-[var(--shadow-card)]">
