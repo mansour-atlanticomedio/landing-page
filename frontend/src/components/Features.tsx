@@ -7,22 +7,22 @@ export default function Feature() {
         {
             icon: Lightbulb,
             title: "Transferencia de conocimiento",
-            text: "Convocatorias 2026 para memorias técnicas y proyectos orientados a la generación de conocimiento aplicado.",
+            text: " Impulsar la investigación y la innovación universitaria mediante el intercambio de experiencias, proyectos y buenas prácticas",
         },
         {
             icon: Briefcase,
             title: "Colaboración público-privada",
-            text: "Puente entre investigación académica y tejido empresarial canario para soluciones comerciales y sociales.",
+            text: "Promover la transferencia del conocimiento y la colaboración entre universidades, instituciones y profesionales",
         },
         {
             icon: BookOpen,
             title: "Innovación docente",
-            text: "IA aplicada a la educación y metodologías activas que se transfieren a otros centros y sectores.",
+            text: "Reflexionar sobre los retos actuales de la educación en ámbitos como la inteligencia artificial, la innovación docente y la transformación digital",
         },
         {
             icon: Microscope,
             title: "Ciencia abierta",
-            text: "Repositorio institucional y acceso libre a los avances científicos.",
+            text: "Favorecer la creación de redes académicas y oportunidades de colaboración interdisciplinar e interinstitucional",
         },
     ];
 

@@ -24,4 +24,5 @@ RUN mkdir -p /usr/local/apache2/htdocs/jornadas
 
 COPY --from=build-stage /app/dist/ /usr/local/apache2/htdocs/jornadas/
 
+
 EXPOSE 80

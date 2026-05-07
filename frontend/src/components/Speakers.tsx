@@ -25,21 +25,21 @@ export default function Speakers() {
     },
     {
       name: "Airam Manuel Guerra",
-      role: "",
-      description: "",
+      role: "Profesor de ciencas marinas",
+      description: "Miembro del grupo de investigación 'Transformación de la Enseñanza STEM en Educación Superior (TES-STEM)' ",
       imageUrl: speaker_4,
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans mx-10 md:p-8">
+    <div className="min-h-screen bg-white font-sans mx-10 md:p-8 flex flex-col justify-center items-center">
       <div className="flex flex-col items-center mb-16">
         <div className="flex items-center gap-3">
           <h2 className="section-title">Ponentes</h2>
         </div>
       </div>
 
-      <div className="max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+      <div className="w-full flex flex-wrap justify-around items-start mb-10">
         {speakers.map((member, index) => (
           <TeamMember key={index} {...member} />
         ))}
@@ -49,9 +49,9 @@ export default function Speakers() {
 };
 
 const TeamMember = ({ name, role, description, imageUrl }) => (
-  <div className="flex flex-col items-center text-center">
-    <div className="relative w-full aspect-square mb-6">
-      <div className="w-full h-80 bg-[#f0f4f8] rounded-[2rem] overflow-hidden">
+  <div className="flex flex-col items-center justify-center text-center">
+    <div className="relative aspect-square mb-6" >
+      <div className="w-80 h-80 bg-[#f0f4f8] rounded-[2rem] overflow-hidden">
         <img 
           src={imageUrl} 
           alt={name} 

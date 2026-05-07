@@ -1,5 +1,4 @@
 import { ContactProps } from "@/types/Contact.type";
-import { DocumentationProps } from "@/types/Documentation.type";
 import { InscriptionProps } from "@/types/inscription.type";
 
 const API_URI: string = '/api'; 

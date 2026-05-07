@@ -12,6 +12,7 @@ import Speakers from "@/components/Speakers";
 const Programa = () => (
   <>
     <Hero
+      pretitle="Os damos la bienvenida a las"
       title="Jornadas de Investigación, Innovación y Transferencia"
       subtitle="UNAM · 16 - 17 de Junio · Campus de Tafira Baja"
       image={hero}
@@ -21,9 +22,9 @@ const Programa = () => (
       </Button>
     </Hero>
 
-    {/* <Stadistics/> */}
+    <Stadistics/>
 
-    <About/>
+    <About />
 
     <Features />
 

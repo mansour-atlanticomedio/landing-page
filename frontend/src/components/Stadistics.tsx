@@ -4,13 +4,12 @@ export default function Stadistics() {
     const stats = [
         { icon: Users, value: "416", label: "Asistentes previstos" },
         { icon: Briefcase, value: "30+", label: "Grupos de investigación" },
-        { icon: Globe, value: "12", label: "Mesas y talleres" },
-        { icon: Award, value: "HRS4R", label: "Sello de calidad" },
+        { icon: Globe, value: "12", label: "Mesas y talleres" }
     ];
 
     return (
         <section className="bg-primary/90 text-primary-foreground py-14">
-            <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="max-w-6xl mx-auto px-6 flex justify-around items-center gap-8">
                 {stats.map(({ icon: Icon, value, label }) => (
                     <div key={label} className="icon-tile">
                         <Icon className="w-12 h-12 text-accent mb-3" strokeWidth={1.5} />

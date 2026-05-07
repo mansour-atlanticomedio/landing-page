@@ -2,6 +2,9 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { Mail, Phone} from "lucide-react";
 import logo from "@/assets/logo.png";
 import Footer from "@/components/Footer";
+import FAQ from "./FAQ";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const navItems = [
   { to: "/", label: "Programa" },
@@ -11,6 +14,13 @@ const navItems = [
 ];
 
 const Layout = () => {
+
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Topbar */}
@@ -68,7 +78,10 @@ const Layout = () => {
         <Outlet />
       </main>
 
+      <FAQ />
+
       <Footer />
+
     </div>
   );
 };
