@@ -30,7 +30,7 @@ const Layout = () => {
             <Phone className="w-4 h-4" /> +34 828 019 019
           </a>
           <a href="mailto:jornadas@atlanticomedio.es" className="flex items-center gap-2 hover:opacity-80">
-            <Mail className="w-4 h-4" /> jornadas@atlanticomedio.es
+            <Mail className="w-4 h-4" /> investigacion@atlanticomedio.es
           </a>
         </div>
       </div>
@@ -38,8 +38,8 @@ const Layout = () => {
       {/* Header */}
       <header className="bg-background border-b border-border sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="UNAMED" width={130} />
+          <Link to="https://www.universidadatlanticomedio.es/" className="flex items-center gap-3">
+            <img src={logo} alt="logo atlantico medio" width={130} />
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
