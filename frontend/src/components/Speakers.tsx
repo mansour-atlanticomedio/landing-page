@@ -5,6 +5,9 @@ import speaker_3 from '/images/speaker-3.jpg'
 import speaker_4 from '/images/speaker-4.jpg'
 import ReactMarkdown from 'react-markdown';
 import { Globe, Linkedin, Twitter, X } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { overlayVariants, modalVariants, cardVariants } from '@/utils/animations'
+import { useState } from 'react'
 
 interface SpeakersProps {
   name: string,
@@ -89,68 +92,96 @@ export default function Speakers() {
   );
 };
 
-const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, website }: SpeakersProps) => (
-  <div className="flex flex-col items-center justify-center text-center hover:scale-105">
-    <div className="relative aspect-square mb-6" >
-      <div className="w-64 h-72  bg-[#f0f4f8] rounded-[2rem] overflow-hidden">
-        <Dialog>
-          <DialogTrigger asChild>
+const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, website }: SpeakersProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+
+      <DialogTrigger asChild>
+        <motion.div
+          className="flex flex-col items-center justify-center text-center cursor-pointer group"
+          variants={cardVariants}
+          whileHover="hover"
+          whileTap="tap"
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+          <div className="relative w-64 h-72 bg-[#f0f4f8] rounded-[2rem] overflow-hidden mb-6 shadow-sm group-hover:shadow-md transition-shadow">
             <img
               src={imageUrl}
               alt={name}
-              className="w-full h-full object-cover object-top cursor-pointer"
+              className="w-full h-full object-cover object-top"
             />
-          </DialogTrigger>
+          </div>
 
-          <DialogPortal>
-            <DialogOverlay className="fixed inset-0 bg-black/50 z-50" >
-              <DialogContent className=" fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-2xl shadow-xl z-50 w-[90vw] max-w-screen-md">
-                <DialogTitle className="flex justify-between mb-4" >
-                  <h2 className='text-accent text-2xl font-bold' >{name}</h2>
-                  <DialogClose>
-                    <X />
+          <h3 className="text-2xl font-bold text-[#1a1c2d] mb-1">{name}</h3>
+          <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
+            {role}
+          </p>
+        </motion.div>
+      </DialogTrigger>
+
+      <AnimatePresence>
+        {isOpen && (
+          <DialogPortal forceMount>
+            <DialogOverlay asChild>
+              <motion.div
+                className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm"
+                variants={overlayVariants}
+                initial="closed"
+                animate="open"
+                exit={{ opacity: 0 }}
+              />
+            </DialogOverlay>
+
+            <DialogContent asChild>
+              <motion.div
+                className="fixed top-1/2 left-1/2 bg-white p-8 rounded-[1.5rem] shadow-2xl z-50 w-[95vw] max-w-3xl overflow-hidden"
+                variants={modalVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+                transition={{ type: "spring", duration: 0.5 }}
+              >
+                <div className="flex justify-between items-start mb-6">
+                  <h2 className="text-accent text-3xl font-bold leading-tight">{name}</h2>
+                  <DialogClose className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <X size={24} />
                   </DialogClose>
-                </DialogTitle>
-                <div className='flex gap-8 max-[700px]:flex-col max-[700px]:items-center  ' >
-                  <div>
-                    <div className='w-64 h-72 max-[700px]:h-56 rounded-[2rem] overflow-hidden' >
-                      <img className='w-full h-full object-cover object-top' src={imageUrl} alt="name" />
-                    </div>
-                    <div>
-                      <div className='flex gap-4 mt-4' >
-                        {linkedin != null && <a className="text-gray-500 text-sm leading-relaxed max-w-[220px]" href={linkedin}><Linkedin /></a>}
-                        {twitter != null && <a className="text-gray-500 text-sm leading-relaxed max-w-[220px]" href={twitter}><Twitter /></a>}
-                        {website != null && <a className="text-gray-500 text-sm leading-relaxed max-w-[220px]" href={website}><Globe /></a>}
-                      </div>
-                    </div>
-                  </div>
-                  <DialogDescription className="text-gray-600 h-80 max-[700px]:h-32 overflow-y-scroll [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                    <ReactMarkdown
-                      components={{
-                        strong: ({ node, ...props }) => <span className="font-bold text-accent" {...props} />,
-                        a: ({ node, ...props }) => <a className="text-accent hover:text-blue-700" {...props} />,
-                        ul: ({ node, ...props }) => <ul className="list-disc ml-4" {...props} />,
-                        li: ({ node, ...props }) => <li className="mb-2" {...props} />,
-                      }}
-                    >
-                      {description}
-                    </ReactMarkdown>
-                    <br />
-                  </DialogDescription>
                 </div>
 
-              </DialogContent>
+                <div className="flex gap-10 max-[700px]:flex-col">
+                  <div className="flex-shrink-0">
+                    <div className="w-64 h-80 rounded-[2rem] overflow-hidden shadow-inner">
+                      <img className="w-full h-full object-cover object-top" src={imageUrl} alt={name} />
+                    </div>
+                    <div className="flex gap-5 mt-6 justify-center">
+                      {linkedin && <a className="text-slate-400 hover:text-blue-600 transition-colors" href={linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /></a>}
+                      {twitter && <a className="text-slate-400 hover:text-sky-500 transition-colors" href={twitter} target="_blank" rel="noreferrer"><Twitter size={22} /></a>}
+                      {website && <a className="text-slate-400 hover:text-emerald-500 transition-colors" href={website} target="_blank" rel="noreferrer"><Globe size={22} /></a>}
+                    </div>
+                  </div>
 
-            </DialogOverlay>
+                  <DialogDescription asChild>
+                    <div className="text-gray-600 h-80 max-[700px]:h-32 overflow-y-scroll [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                      <ReactMarkdown
+                        components={{
+                          strong: ({ ...props }) => <span className="font-bold text-accent" {...props} />,
+                          a: ({ ...props }) => <a className="text-accent hover:underline font-medium" target="_blank" {...props} />,
+                          ul: ({ ...props }) => <ul className="list-disc ml-5 space-y-2 my-4" {...props} />,
+                          li: ({ ...props }) => <li {...props} />,
+                        }}
+                      >
+                        {description}
+                      </ReactMarkdown>
+                    </div>
+                  </DialogDescription>
+                </div>
+              </motion.div>
+            </DialogContent>
           </DialogPortal>
-        </Dialog>
-      </div>
-    </div>
-
-    <h3 className="text-2xl font-bold text-[#1a1c2d] mb-3">{name}</h3>
-    <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
-      {role}
-    </p>
-
-  </div>
-);
+        )}
+      </AnimatePresence>
+    </Dialog>
+  );
+};

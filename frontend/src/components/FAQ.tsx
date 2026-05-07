@@ -32,8 +32,8 @@ export default function FAQ() {
             </div>
             <div className="flex flex-col gap-6" >
                 {
-                    faqs.map((faq) => (
-                        <Accordion type="multiple" className="border-2 p-2" >
+                    faqs.map((faq, index) => (
+                        <Accordion key={index} type="multiple" className="border-2 p-2" >
                             <AccordionItem value="item-1" >
                                 <AccordionTrigger className="flex gap-2 items-center" >
                                     <Plus className="text-accent" size={20} />
