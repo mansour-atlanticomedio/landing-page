@@ -8,16 +8,13 @@ export default function FAQ() {
         {
             question: "¿A quién van dirigidas?",
             answer: `- Profesorado universitario.
-- Personal investigador y grupos de investigación.
-- Doctorandos y personal investigador en formación.
-- Profesionales vinculados a la innovación y transferencia del conocimiento.
-- Equipos de gestión universitaria y responsables institucionales.
-- Profesionales de instituciones y organismos interesados en investigación e innovación.
-- Estudiantado de máster y doctorado.`
+ - Equipos de gestión universitaria y responsables institucionales.
+ - Profesionales de instituciones y organismos interesados en investigación e innovación.
+ - Estudiantado de máster y doctorado.`
         },
         {
             question: "¿Cuando se celebran?",
-            answer: `Las jornadas se celebran los días **16 y 17 de junio** en la **Universidad del Atlántico Medio**.`
+            answer: `Las jornadas se celebran los días **16 y 17 de junio** de 9h a 14h en la **Universidad del Atlántico Medio**.`
         },
         {
             question: "¿Dónde se celebran?",

@@ -136,7 +136,7 @@ const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, webs
 
             <DialogContent asChild>
               <motion.div
-                className="fixed top-1/2 left-1/2 bg-white p-8 rounded-[1.5rem] shadow-2xl z-50 w-[95vw] max-w-3xl overflow-hidden"
+                className="fixed top-1/2 left-1/2 bg-white p-8 rounded-[1.5rem] shadow-2xl z-50 w-[95vw] max-w-4xl overflow-hidden"
                 variants={modalVariants}
                 initial="closed"
                 animate="open"
