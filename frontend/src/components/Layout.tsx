@@ -39,7 +39,7 @@ const Layout = () => {
       {/* Header */}
       <header className="bg-background border-b border-border sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
-          <Link to="https://www.universidadatlanticomedio.es/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="logo atlantico medio" width={130} />
           </Link>
           <nav className="hidden md:flex items-center gap-8">
