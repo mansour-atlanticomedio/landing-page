@@ -24,9 +24,9 @@ export default function FAQ() {
 
     return (
         <section className="p-16 flex flex-col gap-10" >
-            <div className="w-full flex justify-start" >
-                <h2 className=" section-title text-start" > FAQS </h2>
-            </div>
+
+            <h2 className="section-title text-start after:ml-0" > FAQS </h2>
+
             <div className="flex flex-col gap-6" >
                 {
                     faqs.map((faq, index) => (
@@ -36,8 +36,8 @@ export default function FAQ() {
                                     <Plus className="text-accent" size={20} />
                                     <h2>{faq.question}</h2>
                                 </AccordionTrigger>
-                                <AccordionContent 
-                                className="mt-4" >
+                                <AccordionContent
+                                    className="mt-4" >
                                     <div className="prose prose-sm max-w-none text-gray-700">
                                         <ReactMarkdown
                                             components={{

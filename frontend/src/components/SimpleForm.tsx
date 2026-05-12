@@ -22,16 +22,16 @@ export default function SimpleForm({ title, formEntries, onSubmit, loading, file
             <h3 className="font-display text-xl font-semibold mb-6">{title || ''}</h3>
             <form onSubmit={(e) => onSubmit(e)} className="space-y-5">
                 {
-                    formEntries.map((entry) =>
+                    formEntries.map((entry, index) =>
                         entry.isTextArea ? (
-                            <div className="space-y-2">
-                                <Label htmlFor={entry.label}>{entry.htmlFor} { entry.isRequired && '*'}</Label>
+                            <div className="space-y-2" key={index}>
+                                <Label htmlFor={entry.label}>{entry.htmlFor} {entry.isRequired && '*'}</Label>
                                 <Textarea id={entry.label} name={entry.label} rows={4} required maxLength={1000} />
                             </div>
 
                         ) : entry.isFileUpload ? (
-                            <div className="space-y-2">
-                                <Label htmlFor={entry.label}>{entry.htmlFor} { entry.isRequired && '*'}</Label>
+                            <div className="space-y-2" key={index}>
+                                <Label htmlFor={entry.label}>{entry.htmlFor} {entry.isRequired && '*'}</Label>
                                 <label
                                     htmlFor={entry.label}
                                     className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md py-8 cursor-pointer hover:border-accent hover:bg-secondary transition-colors"
@@ -51,8 +51,8 @@ export default function SimpleForm({ title, formEntries, onSubmit, loading, file
                                 </label>
                             </div>
                         ) : (
-                            <div className="space-y-2">
-                                <Label htmlFor={entry.label}>{entry.htmlFor} { entry.isRequired && '*'}</Label>
+                            <div className="space-y-2" key={index}>
+                                <Label htmlFor={entry.label}>{entry.htmlFor} {entry.isRequired && '*'}</Label>
                                 <Input id={entry.label} name={entry.label} />
                             </div>
 

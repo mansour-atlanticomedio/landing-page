@@ -7,7 +7,8 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const navItems = [
-  { to: "/", label: "Programa" },
+  { to: "/", label: "Inicio" },
+  { to: "/programa", label: "Programa" },
   { to: "/inscripcion", label: "Inscripción" },
   { to: "/documentacion", label: "Documentación" },
   { to: "/contacto", label: "Contacto" },

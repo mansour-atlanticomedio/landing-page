@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 export default function CTA() {
+
+  const cta_button: string = 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=XY9FITLOIEKpKiuDNuULSADr381rgy1HsyQ7GPxGWOpUMDNUMFIwV0JJM05ZR1VFR1c3UDFMRFhMMS4u&route=shorturl'
+
     return (
         <section className="bg-accent text-accent-foreground py-16 text-center">
       <div className="max-w-3xl mx-auto px-6">
@@ -10,7 +13,7 @@ export default function CTA() {
         </h2>
         <p className="mb-8 text-accent-foreground/90">Reserva tu plaza en estas Jornadas 2026 de la Universidad del Atlántico Medio.</p>
         <Button asChild size="lg" variant="outline" className="border-2 border-accent-foreground text-accent-foreground bg-transparent hover:bg-accent-foreground hover:text-accent uppercase tracking-wider">
-          <Link to="/inscripcion" >Inscribirme ahora</Link>
+           <Link to={cta_button}>Inscríbete</Link>
         </Button>
       </div>
     </section>

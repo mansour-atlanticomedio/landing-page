@@ -63,54 +63,59 @@ const Contacto = () => {
 
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+          <div>
+            <div className="flex flex-col gap-4 mb-4" >
+              <div className="w-full flex justify-start " >
+                <h3 className="section-title text-xl after:ml-0" >Universidad del Atlántico Medio</h3>
+              </div>
 
-          <Info
-            title="Universidad del Atlántico Medio"
-            subtitle=" La UNAMED es una universidad privada en Las Palmas de Gran Canaria con un fuerte
-              compromiso con la investigación, la innovación y la transferencia de conocimiento
-              al tejido empresarial y social canario."
-          >
-            <ul className="space-y-5">
-              <li className="flex gap-4">
-                <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">Dirección</div>
-                  <div className="text-muted-foreground text-sm">Carretera de Quílmes, 37 · 35017 Tafira Baja · Las Palmas de Gran Canaria</div>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">Teléfono</div>
-                  <a href="tel:+34828019019" className="text-muted-foreground text-sm hover:text-accent">+34 828 019 019</a>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">Email</div>
-                  <a href="mailto:jornadas@atlanticomedio.es" className="text-muted-foreground text-sm hover:text-accent">jornadas@atlanticomedio.es</a>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">Horario</div>
-                  <div className="text-muted-foreground text-sm">Lunes a viernes · 9:00 – 18:00</div>
-                </div>
-              </li>
-            </ul>
-          </Info>
+              <h4>La UNAMED es una universidad privada en Las Palmas de Gran Canaria con un fuerte
+                compromiso con la investigación, la innovación y la transferencia de conocimiento
+                al tejido empresarial y social canario</h4>
+            </div>
+            <div>
+              <ul className="space-y-5">
+                <li className="flex gap-4">
+                  <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">Dirección</div>
+                    <div className="text-muted-foreground text-sm">Carretera de Quílmes, 37 · 35017 Tafira Baja · Las Palmas de Gran Canaria</div>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">Teléfono</div>
+                    <a href="tel:+34828019019" className="text-muted-foreground text-sm hover:text-accent">+34 828 019 019</a>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">Email</div>
+                    <a href="mailto:jornadas@atlanticomedio.es" className="text-muted-foreground text-sm hover:text-accent">jornadas@atlanticomedio.es</a>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">Horario</div>
+                    <div className="text-muted-foreground text-sm">Lunes a viernes · 9:00 – 18:00</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-          <SimpleForm title="Envíanos un mensaje" formEntries={formEntries} onSubmit={onSubmit} loading={loading}  />
+          <SimpleForm title="Envíanos un mensaje" formEntries={formEntries} onSubmit={onSubmit} loading={loading} />
 
         </div>
       </section>

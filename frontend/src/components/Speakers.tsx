@@ -12,6 +12,7 @@ import { useState } from 'react'
 interface SpeakersProps {
   name: string,
   role: string,
+  entity: string,
   description: string,
   imageUrl: string,
   linkedin?: string,
@@ -23,8 +24,9 @@ export default function Speakers() {
 
   const speakers: SpeakersProps[] = [
     {
-      name: "Ana García Valcárcel",
-      role: "Dra en educacion y Catedrática",
+      name: "Dra. Ana García-Valcárcel Muñoz-Repiso",
+      role: "Catedrática de Didáctica y Organización Escolar",
+      entity: "Universidad de Salamanca",
       description: `- Catedrática de la Universidad de Salamanca en la Facultad de Educación
 - Miembro del Instituto Universitario de Ciencias de la Educación. 
 - Miembro de la Comisión Académica del Doctorado “Formación en la sociedad del conocimiento”. 
@@ -37,8 +39,9 @@ export default function Speakers() {
       website: "https://diarium.usal.es/anagv/informacion-3/"
     },
     {
-      name: "Manuel Area Moreira",
-      role: "Dr. en Pedagogía y Catedrático",
+      name: "Dr. Manuel Area Moreira",
+      role: "Catedrático de Tecnología Educativa",
+      entity: "Universidad de La Laguna",
       description: `- Catedrático de la Universidad de La Laguna. 
 - Su ámbito de investigación y docencia es la Tecnología Educativa (Cultura digital y educación, Enseñanza con medios y tecnologías, eLearning, Alfabetización y TIC, Políticas educativas y ciudadanía digital, IA en educación,...). 
 - Es el Investigador Principal del Laboratorio de Educación y Nuevas Tecnologías (EDULLAB). 
@@ -50,8 +53,9 @@ export default function Speakers() {
       twitter: "https://x.com/manuel_area",
     },
     {
-      name: "Cristina Villalonga Gómez",
-      role: "Dra en comunicación y educación",
+      name: "Dra. Cristina Villalonga Gómez",
+      role: "Vicerrectora de Educación Digital y Tecnología",
+      entity: "Universidad Nebrija",
       description: `- Vicerrectora de Educación Digital y Tecnología en la Universidad de Nebrija, desde la que lidera la estrategia de transformación digital. 
 - Ha sido directora de Global Campus, la unidad de Educación Digital de la Universidad de Nebrija. Doctora en Comunicación y Educación en Entornos Digitales por la UNED
 - Su actividad docente e investigadora se articula en torno a dos líneas principales: los procesos educomunicativos y el desarrollo de competencias digitales y mediáticas; y el análisis y diseño de metodologías docentes y estrategias de aprendizaje en entornos virtuales e híbridos. 
@@ -64,8 +68,9 @@ export default function Speakers() {
       twitter: "https://x.com/crisvillalonga"
     },
     {
-      name: "Airam Manuel Guerra",
-      role: "Profesor de ciencias marinas",
+      name: "Dr. Airam Manuel Guerra",
+      role: "Profesor e investigador en Ciencias Marinas",
+      entity: "Universidad del Atlántico Medio",
       description: `- Profesor en la Universidad del Atlántico Medio donde su actividad docente e investigadora se enfoca en la valorización de las ciencias marinas a través de la enseñanza STEM y la evaluación del impacto de Inteligencia Artificial Generativa (IAGen) en el ámbito universitario. 
 - Miembro del grupo de investigación "Transformación de la Enseñanza STEM en Educación Superior (TES-STEM) " .
 - Investigador Principal del proyecto "Uso participativo del análisis DAFO para el diseño de una guía de buenas prácticas de la Inteligencia Artificial Generativa en el proceso de enseñanza-aprendizaje universitario. "`,
@@ -83,7 +88,7 @@ export default function Speakers() {
         </div>
       </div>
 
-      <div className="w-full max-w-7xl flex flex-wrap justify-around items-start mb-10">
+      <div className="w-full max-w-8xl flex flex-wrap justify-around items-center mb-10 gap-y-4">
         {speakers.map((member, index) => (
           <TeamMember key={index} {...member} />
         ))}
@@ -92,7 +97,7 @@ export default function Speakers() {
   );
 };
 
-const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, website }: SpeakersProps) => {
+const TeamMember = (member: SpeakersProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -108,15 +113,18 @@ const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, webs
         >
           <div className="relative w-64 h-72 bg-[#f0f4f8] rounded-[2rem] overflow-hidden mb-6 shadow-sm group-hover:shadow-md transition-shadow">
             <img
-              src={imageUrl}
-              alt={name}
+              src={member.imageUrl}
+              alt={member.name}
               className="w-full h-full object-cover object-top"
             />
           </div>
 
-          <h3 className="text-2xl font-bold text-[#1a1c2d] mb-1">{name}</h3>
+          <h3 className="text-xl font-bold text-[#1a1c2d] mb-1">{member.name}</h3>
+          <p className="text-gray-600 font-bold text-sm leading-relaxed max-w-[220px]">
+            {member.role}
+          </p>
           <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
-            {role}
+            {member.entity}
           </p>
         </motion.div>
       </DialogTrigger>
@@ -136,7 +144,7 @@ const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, webs
 
             <DialogContent asChild>
               <motion.div
-                className="fixed top-1/2 left-1/2 bg-white p-8 rounded-[1.5rem] shadow-2xl z-50 w-[95vw] max-w-4xl overflow-hidden"
+                className="fixed top-1/2 left-1/2 bg-white p-8 rounded-[1rem] shadow-2xl z-50 w-[95vw] max-w-4xl overflow-hidden"
                 variants={modalVariants}
                 initial="closed"
                 animate="open"
@@ -144,7 +152,7 @@ const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, webs
                 transition={{ type: "spring", duration: 0.5 }}
               >
                 <div className="flex justify-between items-start mb-6">
-                  <h2 className="text-accent text-3xl font-bold leading-tight">{name}</h2>
+                  <h2 className="text-accent text-3xl font-bold leading-tight">{member.name}</h2>
                   <DialogClose className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                     <X size={24} />
                   </DialogClose>
@@ -153,17 +161,17 @@ const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, webs
                 <div className="flex gap-10 max-[700px]:flex-col">
                   <div className="flex-shrink-0">
                     <div className="w-64 h-80 rounded-[2rem] overflow-hidden shadow-inner">
-                      <img className="w-full h-full object-cover object-top" src={imageUrl} alt={name} />
+                      <img className="w-full h-full object-cover object-top" src={member.imageUrl} alt={member.name} />
                     </div>
                     <div className="flex gap-5 mt-6 justify-center">
-                      {linkedin && <a className="text-slate-400 hover:text-blue-600 transition-colors" href={linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /></a>}
-                      {twitter && <a className="text-slate-400 hover:text-sky-500 transition-colors" href={twitter} target="_blank" rel="noreferrer"><Twitter size={22} /></a>}
-                      {website && <a className="text-slate-400 hover:text-emerald-500 transition-colors" href={website} target="_blank" rel="noreferrer"><Globe size={22} /></a>}
+                      {member.linkedin && <a className="text-slate-400 hover:text-blue-600 transition-colors" href={member.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /></a>}
+                      {member.twitter && <a className="text-slate-400 hover:text-sky-500 transition-colors" href={member.twitter} target="_blank" rel="noreferrer"><Twitter size={22} /></a>}
+                      {member.website && <a className="text-slate-400 hover:text-emerald-500 transition-colors" href={member.website} target="_blank" rel="noreferrer"><Globe size={22} /></a>}
                     </div>
                   </div>
 
                   <DialogDescription asChild>
-                    <div className="text-gray-600 h-80 max-[700px]:h-32 overflow-y-scroll [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                    <div className="text-gray-600 h-80 max-[700px]:h-32 overflow-y-scroll [mask-image:linear-gradient(to_bottom,black_90%,transparent_100%)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                       <ReactMarkdown
                         components={{
                           strong: ({ ...props }) => <span className="font-bold text-accent" {...props} />,
@@ -172,7 +180,7 @@ const TeamMember = ({ name, role, description, imageUrl, linkedin, twitter, webs
                           li: ({ ...props }) => <li {...props} />,
                         }}
                       >
-                        {description}
+                        {member.description}
                       </ReactMarkdown>
                     </div>
                   </DialogDescription>

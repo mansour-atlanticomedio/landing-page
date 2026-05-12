@@ -9,31 +9,30 @@ import Timeline from "@/components/Timeline";
 import CTA from "@/components/CTA";
 import Speakers from "@/components/Speakers";
 
-const Programa = () => (
-  <>
-    <Hero
-      pretitle="Os damos la bienvenida a las"
-      title="Jornadas de Investigación, Innovación y Transferencia"
-      subtitle="UNAM · 16 - 17 de Junio · Campus de Tafira Baja"
-      image={hero}
-    >
-      <Button asChild size="lg" variant="outline" className="border-2 border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary-foreground hover:text-primary uppercase tracking-wider">
-        <Link to="/inscripcion">Inscríbete</Link>
-      </Button>
-    </Hero>
+export default function Programa() {
+  const cta_button: string = 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=XY9FITLOIEKpKiuDNuULSADr381rgy1HsyQ7GPxGWOpUMDNUMFIwV0JJM05ZR1VFR1c3UDFMRFhMMS4u&route=shorturl'
+  
+  return (
+    <>
+      <Hero
+        title="Programa"
+        subtitle="Accede a informacion sobre la jornada"
+        image={hero}
+      >
+        <Button asChild size="lg" variant="outline" className="border-2 border-primary-foreground text-primary-foreground bg-transparent hover:bg-primary-foreground hover:text-primary uppercase tracking-wider">
+          <Link to={cta_button}>Inscríbete</Link>
+        </Button>
+      </Hero>
 
-    <Stadistics/>
+      <Timeline />
 
-    <About />
+      <Speakers />
 
-    <Features />
+      <CTA />
+    </>
 
-    <Timeline />
+  )
+}
 
-    <Speakers />
 
-    <CTA />
-  </>
-);
 
-export default Programa;

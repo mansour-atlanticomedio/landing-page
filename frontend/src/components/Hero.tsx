@@ -10,9 +10,9 @@ interface HeroProps {
 
 const Hero = ({ pretitle, title, subtitle, image, children }: HeroProps) => (
   <section
-    className="relative min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-primary-foreground"
-    style={{ backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
-  >
+  className="relative min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-primary-foreground bg-cover bg-[center_top_30%]"
+  style={{ backgroundImage: `url(${image})` }}
+>
     <div className="absolute inset-0 hero-overlay" />
     <div className="relative z-10 max-w-4xl px-6 py-20">
       { pretitle && <p className="text-md md:text-lg text-primary-foreground/90 mb-4" >{pretitle}</p>}

@@ -9,6 +9,7 @@ import Inscripcion from "./pages/Inscripcion";
 import Documentacion from "./pages/Documentacion";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound.tsx";
+import Home from "./pages/Home.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +21,8 @@ const App = () => (
       <BrowserRouter basename="/jornadas" >
         <Routes>
           <Route element={<Layout />}>
-            <Route index element={<Programa />} />
+            <Route index element={<Home />} />
+            <Route path="programa" element={<Programa />} />
             <Route path="inscripcion" element={<Inscripcion />} />
             <Route path="documentacion" element={<Documentacion />} />
             <Route path="contacto" element={<Contacto />} />
