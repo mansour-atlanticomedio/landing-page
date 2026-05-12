@@ -5,7 +5,7 @@ import Markdown from "react-markdown";
 export default function Info({ icon: Icon, title, subtitle, sections, generalEntries }: InfoProps) {
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-300 font-sans">
+    <div className="max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-300 font-sans">
       <div className="p-6 flex items-start gap-4">
         <div className="bg-[#4FA1A1] p-3 rounded-xl shadow-inner">
           <Icon className="text-white w-8 h-8" />

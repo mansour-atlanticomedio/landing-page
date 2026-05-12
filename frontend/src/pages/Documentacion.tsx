@@ -113,20 +113,21 @@ const Documentacion = () => {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-2 grid-rows-1 m-8">
-          {
-            templateSections.map((templateSection, index) => (
-              <Info
-                key={index}
-                icon={templateIcons[index]}
-                title={`Plantilla ${index + 1}`}
-                subtitle="Presentación de proyectos de investigación e innovación"
-                sections={templateSection}
-                generalEntries={generalEntries[index]}
-              ></Info>
-
-            ))
-          }
+        <div className="w-full flex justify-center">
+          <div className=" max-w-7xl m-8 grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center items-start">
+            {
+              templateSections.map((templateSection, index) => (
+                <Info
+                  key={index}
+                  icon={templateIcons[index]}
+                  title={`Plantilla ${index + 1}`}
+                  subtitle="Presentación de proyectos de investigación e innovación"
+                  sections={templateSection}
+                  generalEntries={generalEntries[index]}
+                ></Info>
+              ))
+            }
+          </div>
         </div>
       </section>
     </>

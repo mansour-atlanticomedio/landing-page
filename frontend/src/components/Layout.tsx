@@ -87,4 +87,20 @@ const Layout = () => {
   );
 };
 
+export const metadata = {
+  title: 'Jornadas de Investigación, Innovación y Transferencia | UNAM',
+  description: 'Jornadas de I+D+i de la Universidad del Atlántico Medio.',
+  openGraph: {
+    title: 'Jornadas de Investigación, Innovación y Transferencia | UNAM',
+    description: 'Jornadas de I+D+i de la Universidad del Atlántico Medio.',
+    images: [
+      {
+        url: 'https://www.atlanticomedio.es/jornadas/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
 export default Layout;
