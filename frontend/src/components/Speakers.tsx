@@ -69,7 +69,7 @@ export default function Speakers() {
     },
     {
       name: "Dr. Airam Manuel Guerra",
-      role: "Profesor contratado doctor e investigador en Ciencias Marinas",
+      role: "Profesor Contratado Doctor",
       entity: "Universidad del Atlántico Medio",
       description: `- Profesor en la Universidad del Atlántico Medio donde su actividad docente e investigadora se enfoca en la valorización de las ciencias marinas a través de la enseñanza STEM y la evaluación del impacto de Inteligencia Artificial Generativa (IAGen) en el ámbito universitario. 
 - Miembro del grupo de investigación "Transformación de la Enseñanza STEM en Educación Superior (TES-STEM) " .

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import hero from "@/assets/campus.jpg";
+import hero from "@/assets/hero-jornadas.jpg";
 import SimpleForm from "@/components/SimpleForm";
 import { SimpleFormProps } from "@/types/form.type";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
@@ -97,7 +97,7 @@ const Contacto = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Email</div>
-                    <a href="mailto:jornadas@atlanticomedio.es" className="text-muted-foreground text-sm hover:text-accent">jornadas@atlanticomedio.es</a>
+                    <a href="'mailto:investigacion@atlanticomedio.es?subject=Mensaje Jornadas de Investigación" className="text-muted-foreground text-sm hover:text-accent">investigacion@atlanticomedio.es</a>
                   </div>
                 </li>
                 <li className="flex gap-4">

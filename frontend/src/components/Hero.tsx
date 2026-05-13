@@ -10,7 +10,7 @@ interface HeroProps {
 
 const Hero = ({ pretitle, title, subtitle, image, children }: HeroProps) => (
   <section
-  className="relative min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-primary-foreground bg-cover bg-[center_bottom_15%]"
+  className="relative min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-primary-foreground bg-cover bg-[center_top_50%]"
   style={{ backgroundImage: `url(${image})` }}
 >
     <div className="absolute inset-0 hero-overlay" />

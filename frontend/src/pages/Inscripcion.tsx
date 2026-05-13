@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import hero from "@/assets/campus.jpg";
+import hero from "@/assets/hero-jornadas.jpg";
 
 export default function Inscription() {
 
