@@ -59,6 +59,16 @@ export default function SimpleForm({ title, formEntries, onSubmit, loading, file
                         )
                     )
                 }
+                <div className="opacity-0 absolute -z-10 h-0 w-0 overflow-hidden" aria-hidden="true">
+                    <label htmlFor="confirm_email_address">Confirma tu email</label>
+                    <input
+                        type="text"
+                        name="confirm_email_address"
+                        id="confirm_email_address"
+                        tabIndex={-1}
+                        autoComplete="off"
+                    />
+                </div>
                 <Button type="submit" disabled={loading} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground uppercase tracking-wider font-semibold">
                     {loading ? "Enviando..." : "Enviar mensaje"}
                 </Button>

@@ -32,7 +32,13 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/send-email', async (req, res) => {
-    const { name, lastName, email, phone, profile, comments } = req.body;
+    const { name, lastName, email, phone, profile, comments, confirm_email_address } = req.body;
+    const honeypot = confirm_email_address
+
+    if( honeypot && honeypot.length > 0 ) {
+        console.log('Spam detectado')
+        res.status(200).json( null );
+    }
 
     const mailOptions = {
         from: EMAIL_USER_FROM, 

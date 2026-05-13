@@ -69,7 +69,7 @@ const Contacto = () => {
                 <h3 className="section-title text-xl after:ml-0" >Universidad del Atlántico Medio</h3>
               </div>
 
-              <h4>La UNAMED es una universidad privada en Las Palmas de Gran Canaria con un fuerte
+              <h4>La UNAM es una universidad privada en Las Palmas de Gran Canaria con un fuerte
                 compromiso con la investigación, la innovación y la transferencia de conocimiento
                 al tejido empresarial y social canario</h4>
             </div>
