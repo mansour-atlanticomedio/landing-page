@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { z } from "zod";
-import PageHero from "@/components/PageHero";
 import { toast } from "sonner";
 import hero from "@/assets/campus.jpg";
-import Info from "@/components/Info";
 import SimpleForm from "@/components/SimpleForm";
 import { SimpleFormProps } from "@/types/form.type";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { ContactProps } from "@/types/Contact.type";
 import { sendMessage } from "@/services/api.service";
+import Hero from "@/components/Hero";
 
 const Contacto = () => {
   const [loading, setLoading] = useState(false);
@@ -59,7 +57,7 @@ const Contacto = () => {
 
   return (
     <>
-      <PageHero title="Contacto" subtitle="Estamos a tu disposición para resolver cualquier duda" image={hero} />
+      <Hero title="Contacto" subtitle="Estamos a tu disposición para resolver cualquier duda" image={hero} />
 
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">

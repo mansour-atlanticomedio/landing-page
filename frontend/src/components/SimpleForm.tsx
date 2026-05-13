@@ -4,7 +4,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { SimpleFormProps } from "@/types/form.type";
 import { Upload } from "lucide-react";
-import { ChangeEvent, FormEvent, ReactEventHandler, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface SimpleFormInterface {
     title?: string,
@@ -16,11 +17,30 @@ interface SimpleFormInterface {
 }
 
 export default function SimpleForm({ title, formEntries, onSubmit, loading, files, fileHandler }: SimpleFormInterface) {
+    const [startTime, setStartTime] = useState<number>(0);
+
+    useEffect(() => {
+        setStartTime(Date.now());
+    }, []);
+
+    const handleLocalSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const endTime = Date.now();
+        const duration = (endTime - startTime) / 1000;
+
+        if (duration < 3) {
+            console.warn("Envío demasiado rápido. Posible bot.");
+            toast.error('Too fast, try again')
+            return; 
+        }
+
+        onSubmit(e);
+    };
 
     return (
         <div className="bg-card border border-border rounded-md p-8 shadow-[var(--shadow-card)]">
             <h3 className="font-display text-xl font-semibold mb-6">{title || ''}</h3>
-            <form onSubmit={(e) => onSubmit(e)} className="space-y-5">
+            <form onSubmit={handleLocalSubmit} className="space-y-5">
                 {
                     formEntries.map((entry, index) =>
                         entry.isTextArea ? (

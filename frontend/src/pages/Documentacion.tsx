@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import { FileText, GraduationCap, LucideIcon, Mail } from "lucide-react";
-import hero from "@/assets/imagen-documentacion.jpg";
+import hero from "@/assets/campus.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Info from "@/components/Info";

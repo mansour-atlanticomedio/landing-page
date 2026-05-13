@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Hero
         pretitle="Os damos la bienvenida a las"
-        title="Jornadas de Investigación, Innovación y Transferencia"
+        title="I Jornadas de Investigación, Innovación y Transferencia"
         subtitle="UNAM · 16 - 17 de Junio · Campus de Tafira Baja"
         image={hero}
       >

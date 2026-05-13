@@ -15,11 +15,7 @@ export default function FAQ() {
         {
             question: "¿Cuando se celebran?",
             answer: `Las jornadas se celebran los días **16 y 17 de junio** de 9h a 14h en la **Universidad del Atlántico Medio**.`
-        },
-        {
-            question: "¿Dónde se celebran?",
-            answer: `Las jornadas tendrán lugar en un entorno orientado al encuentro académico, la colaboración y la difusión del conocimiento. como esta aqui: [https://stellae.usc.es/jute2026/](https://stellae.usc.es/jute2026/ "https://stellae.usc.es/jute2026/")`
-        },
+        }
     ]
 
     return (
